@@ -1,2 +1,0 @@
-hi 
-#include <stdio.h>
