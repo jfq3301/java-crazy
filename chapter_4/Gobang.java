@@ -1,8 +1,11 @@
 /**
- * @brief Gobang console
+ * @brief Gobang console.
+ *   Ubuntu HMI(view)is not ok, "╋".
+ * @author jfq
  * @date 20190314
  */
 
+import java.io.*;
 
 public class Gobang
 {
@@ -17,7 +20,7 @@ public class Gobang
 		{
 			for (int j = 0; j < BOARD_SIZE; j++)
 			{
-				board[i][j] = "+";
+				board[i][j] = "╋";
 				// System.out.println()
 			}
 		}
@@ -43,8 +46,21 @@ public class Gobang
 		Gobang gb = new Gobang();
 		gb.initBoard();
 		gb.printBoard();
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String inputStr = null;
+
+		while ((inputStr = br.readLine()) != null)
+		{
+			String[] posStrArr = inputStr.split(",");
+			int x = Integer.parseInt(posStrArr[0]);
+			int y = Integer.parseInt(posStrArr[1]);
+
+			gb.board[x - 1][y - 1] = "●";
+			gb.printBoard();
+
+			System.out.println("Please input x,y:");
+		}
 	}
-
-
 }
 
